@@ -4,8 +4,8 @@ chars = string.ascii_uppercase + string.ascii_lowercase
 
 def encrypt(text, key):
 
-    mappedText = [chars.find(i) for i in text]
-    mappedKey = [chars.find(i) for i in key]
+    textCharAtPos = [chars.find(i) for i in text]
+    keyCharAtPos = [chars.find(i) for i in key]
 
     keyLength = len(key)
     textLength = len(text)
@@ -13,15 +13,16 @@ def encrypt(text, key):
     cipher = ""
 
     for n in range(textLength):
-        letter = (mappedText[n] + mappedKey[n % keyLength]) % len(chars)
+        letter = (textCharAtPos[n] + keyCharAtPos[n % keyLength]) % len(chars)
         cipher += chars[letter]
 
     return cipher
 
+
 def decrypt(cipher, key):
     
-    mappedCipher = [chars.find(i) for i in cipher]
-    mappedKey = [chars.find(i) for i in key]
+    cipherCharAtPos = [chars.find(i) for i in cipher]
+    keyCharAtPos = [chars.find(i) for i in key]
 
     keyLength = len(key)
     cipherLength = len(cipher)
@@ -29,7 +30,7 @@ def decrypt(cipher, key):
     plainText = ""
 
     for n in range(cipherLength):
-        letter = (mappedCipher[n] - mappedKey[n % keyLength]) % len(chars)
+        letter = (cipherCharAtPos[n] - keyCharAtPos[n % keyLength]) % len(chars)
         plainText += chars[letter]
 
     return plainText
