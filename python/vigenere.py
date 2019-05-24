@@ -1,6 +1,6 @@
 import string
 
-chars = string.ascii_uppercase
+chars = string.ascii_uppercase + string.ascii_lowercase
 
 def encrypt(text, key):
 
@@ -37,12 +37,13 @@ def decrypt(cipher, key):
 
 if __name__ == "__main__":
     
-    text = "HalloWelt"
-    key = "Chiffre"
+    text = input('Text: ')
+    key = input('Key: ')
 
     cipher = encrypt(text, key)
     plainText = decrypt(cipher, key)
 
+    print('=======================')
     print('Text: ', text)
     print('Key: ', key)
     print('Cipher: ', cipher)
